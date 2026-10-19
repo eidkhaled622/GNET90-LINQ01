@@ -61,7 +61,13 @@ var SortedList = Arr
     .OrderBy(w => w.Length)
     .ThenBy(w => w, StringComparer.OrdinalIgnoreCase);
 
-foreach (var item in SortedList)
+string[] digits = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+var result = digits
+    .Where(d => d.Length > 1 && d[1] == 'i')
+    .Reverse()
+    .ToList();
+
+foreach (var item in result)
 {
     Console.WriteLine(item);
 }
