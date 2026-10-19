@@ -16,7 +16,9 @@ var SortByUnitPrice =
     orderby product.UnitPrice
     select product;
 
-foreach (var product in SortByUnitPrice)
+var getAllProductsByUnitPrice = products.Select(p => p).Where(p => p.UnitPrice > 10 && p.UnitPrice < 30);
+
+foreach (var product in getAllProductsByUnitPrice)
 {
     Console.WriteLine($"{product.ProductID} , {product.ProductName} , {product.Category} ,{product.UnitPrice} , {product.UnitsInStock}");
 }
