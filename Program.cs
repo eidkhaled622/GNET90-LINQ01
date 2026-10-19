@@ -44,8 +44,17 @@ var descendingUnitinStock =
     orderby product.UnitsInStock descending
     select product;
 
+var ordersListedByDate =
+    from customer in customers
+    from order in customer.Orders
+    where order.OrderDate.Year == 1997
+    select new
+    {
+        customer.CustomerID,
+        order.OrderDate
+    };
 
-foreach (var product in descendingUnitinStock)
+foreach (var item in ordersListedByDate)
 {
-    Console.WriteLine($"{product.ProductName} , {product.Category} ,{product.UnitsInStock}");
+    Console.WriteLine($"{item.CustomerID} , {item.OrderDate}");
 }
