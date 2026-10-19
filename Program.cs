@@ -31,7 +31,9 @@ var anonymousType = products.Select(p => new
     StockStatus = p.UnitsInStock > 0 ? "Available" : "Out of Stock"
 });
 
-foreach (var product in anonymousType)
+var oneBasedNumbers = products.Select((p, index) => $"{index + 1} , {p.ProductName}");
+
+foreach (var line in oneBasedNumbers)
 {
-    Console.WriteLine($"{product.Name},{product.Price},{product.StockStatus}");
+    Console.WriteLine(line);
 }
