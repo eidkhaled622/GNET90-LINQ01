@@ -56,7 +56,12 @@ var ordersListedByDate =
 
 var ProductNameWithPosition = products.Select((p, index) => $"{index + 1} , {p.ProductName}");
 
-foreach (var item in ProductNameWithPosition)
+String[] Arr = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
+var SortedList = Arr
+    .OrderBy(w => w.Length)
+    .ThenBy(w => w, StringComparer.OrdinalIgnoreCase);
+
+foreach (var item in SortedList)
 {
     Console.WriteLine(item);
 }
