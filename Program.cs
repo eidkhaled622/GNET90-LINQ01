@@ -38,7 +38,14 @@ var getProductListWithOrder =
     orderby product.Category, product.UnitPrice descending
     select product;
 
-foreach (var product in getProductListWithOrder)
+var descendingUnitinStock =
+    from product in products
+    where product.Category == "Beverages"
+    orderby product.UnitsInStock descending
+    select product;
+
+
+foreach (var product in descendingUnitinStock)
 {
-    Console.WriteLine($"{product.ProductName} , {product.Category} ,{product.UnitPrice}");
+    Console.WriteLine($"{product.ProductName} , {product.Category} ,{product.UnitsInStock}");
 }
