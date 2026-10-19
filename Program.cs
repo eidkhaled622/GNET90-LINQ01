@@ -1,4 +1,5 @@
 ﻿using LINQ.DataSources;
+using LINQ.Models;
 
 var products = Source.ProductList;
 var customers = Source.CustomerList;
@@ -8,8 +9,9 @@ var getSeaFoodCategory =
     where product.Category == "Seafood"
     select product;
 
+var getOnlyTheProductName = products.Select(Product => Product.ProductName);
 
-foreach (var product in getSeaFoodCategory)
+foreach (var name in getOnlyTheProductName)
 {
-    Console.WriteLine($"{product.ProductID} , {product.ProductName} , {product.Category} , {product.UnitPrice} , {product.UnitsInStock}");
+    Console.WriteLine($"{name}");
 }
