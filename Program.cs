@@ -11,7 +11,12 @@ var getSeaFoodCategory =
 
 var getOnlyTheProductName = products.Select(Product => Product.ProductName);
 
-foreach (var name in getOnlyTheProductName)
+var SortByUnitPrice =
+    from product in products
+    orderby product.UnitPrice
+    select product;
+
+foreach (var product in SortByUnitPrice)
 {
-    Console.WriteLine($"{name}");
+    Console.WriteLine($"{product.ProductID} , {product.ProductName} , {product.Category} ,{product.UnitPrice} , {product.UnitsInStock}");
 }
