@@ -54,7 +54,9 @@ var ordersListedByDate =
         order.OrderDate
     };
 
-foreach (var item in ordersListedByDate)
+var ProductNameWithPosition = products.Select((p, index) => $"{index + 1} , {p.ProductName}");
+
+foreach (var item in ProductNameWithPosition)
 {
-    Console.WriteLine($"{item.CustomerID} , {item.OrderDate}");
+    Console.WriteLine(item);
 }
