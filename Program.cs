@@ -24,7 +24,14 @@ var getTheUnitInStock =
     orderby product.ProductID
     select product;
 
-foreach (var product in getTheUnitInStock)
+var anonymousType = products.Select(p => new
 {
-    Console.WriteLine($"{product.ProductID} , {product.ProductName} , {product.Category} ,{product.UnitPrice} , {product.UnitsInStock}");
+    Name = p.ProductName,
+    Price = p.UnitPrice,
+    StockStatus = p.UnitsInStock > 0 ? "Available" : "Out of Stock"
+});
+
+foreach (var product in anonymousType)
+{
+    Console.WriteLine($"{product.Name},{product.Price},{product.StockStatus}");
 }
