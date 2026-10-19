@@ -33,7 +33,12 @@ var anonymousType = products.Select(p => new
 
 var oneBasedNumbers = products.Select((p, index) => $"{index + 1} , {p.ProductName}");
 
-foreach (var line in oneBasedNumbers)
+var getProductListWithOrder =
+    from product in products
+    orderby product.Category, product.UnitPrice descending
+    select product;
+
+foreach (var product in getProductListWithOrder)
 {
-    Console.WriteLine(line);
+    Console.WriteLine($"{product.ProductName} , {product.Category} ,{product.UnitPrice}");
 }
