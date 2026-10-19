@@ -18,7 +18,13 @@ var SortByUnitPrice =
 
 var getAllProductsByUnitPrice = products.Select(p => p).Where(p => p.UnitPrice > 10 && p.UnitPrice < 30);
 
-foreach (var product in getAllProductsByUnitPrice)
+var getTheUnitInStock =
+    from product in products
+    where product.Category.Contains("Condiments")
+    orderby product.ProductID
+    select product;
+
+foreach (var product in getTheUnitInStock)
 {
     Console.WriteLine($"{product.ProductID} , {product.ProductName} , {product.Category} ,{product.UnitPrice} , {product.UnitsInStock}");
 }
